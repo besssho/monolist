@@ -1,0 +1,48 @@
+<% @rankings.each_with_index do |(item, count),rank| %>
+<div class="container">
+  <div class="container-inner inner-sm clearfix">
+    <div class="item-single-main">
+      <div class="image">
+        <div class="img-wrap">
+          <% if item.large_image.present? %>
+            <%= image_tag(item.large_image , alt: item.title) %>
+          <% else %>
+            <%= image_tag("no-image.png" , alt: item.title) %>
+          <% end %>
+        </div>
+      </div>
+      <div class="title">
+         <%= item.title %>
+      </div>
+         <%= render 'items/action', item: item  %>
+    </div>
+    <div class="item-single-side">
+      <div class="side-box">
+        <h1 class="side-box-title">No.<%= rank+1 %></h1>
+        <div class="side-box-body">
+            <h4>HAVEしたユーザー数：<%= count %></h4>
+            <h4>WANTしたユーザー数：<%= count %></h4>
+        </div>
+      </div>
+      <div class="side-box">
+        <h4 class="side-box-title">Haveしたユーザー</h4>
+        <div class="side-box-body">
+          <% #  Haveしたユーザー一覧 %>
+            <% item.have_users.each do |user| %>
+              <%= render partial: 'items/user_list', locals:{ user: user } %>
+          <% end %>
+        </div>
+      </div>
+      <div class="side-box">
+        <h4 class="side-box-title">Wantしたユーザー</h4>
+        <div class="side-box-body">
+          <% # Wantしたユーザー一覧 %>
+          <% item.want_users.each do |user| %>
+              <%= render partial: 'items/user_list', locals:{ user: user } %>
+          <% end %>
+        </div>
+      </div>
+  </div>
+</div>
+
+<% end %>
