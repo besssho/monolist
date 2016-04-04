@@ -20,8 +20,8 @@
       <div class="side-box">
         <h1 class="side-box-title">No.<%= rank+1 %></h1>
         <div class="side-box-body">
-            <h4>HAVEしたユーザー数：<%= count %></h4>
-            <h4>WANTしたユーザー数：<%= count %></h4>
+            <h4>HAVEしたユーザー数：<%= item.have_users.count %></h4>
+            <h4>WANTしたユーザー数：<%= item.want_users.count %></h4>
         </div>
       </div>
       <div class="side-box">
@@ -44,5 +44,4 @@
       </div>
   </div>
 </div>
-
 <% end %>
